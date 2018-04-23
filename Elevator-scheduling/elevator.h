@@ -1,12 +1,12 @@
-#include<iostream>
-#include<fstream>
-using namespace std;
+#ifndef elevator_h
+#define elevator_h
+
 class Elevator
 {
 	private:
 		int Ctime;					//当前时间 
 		int Cflr;					//当前楼层
-		int DES[500];				//下一个目标 
+		int DES;				//下一个目标 
 		int Dir;					//方向,-1下,1上 
 	public:
 		int target;					//指向DES 
@@ -18,3 +18,5 @@ class Elevator
 		void run_down();
 		void wait();				//在某一层等待 
 };
+
+#endif

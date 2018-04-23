@@ -1,5 +1,7 @@
+
 #include<iostream>
 #include<fstream>
+
 using namespace std;
 class visitor
 {
@@ -17,3 +19,4 @@ class visitor
 		void in();						//上电梯 
 		void off();						//下电梯 
 };
+

@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include"elevator.cpp"
+
 #include"visitor.cpp"
 
 using namespace std;
@@ -57,7 +58,7 @@ int main()
 	ifstream scan;
 	ofstream print;
 	scan.open(pathin.c_str(),ios::in);
-	print.open(pathot.c_str(),ios::app)
+	print.open(pathot.c_str(),ios::app);
 	scan>>n;
 	for(i=0;i<n;i++)
 	{

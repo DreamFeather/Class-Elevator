@@ -1,10 +1,11 @@
+
 #include<iostream>
 #include<fstream>
 #include"elevator.h"
 using namespace std;
 void Elevator::initial()
 {
-	Ctime=0;Cflr=0;DES=0;state=0;targe=0;
+	Ctime=0;Cflr=0;DES=0;target=0;
 }
 
 int Elevator::C_time(){	return Ctime;}
@@ -27,3 +28,4 @@ void Elevator::wait()
 {
 	Ctime++;
 }
+
