@@ -1,31 +1,29 @@
 
-#include<iostream>
-#include<fstream>
 #include"elevator.h"
 using namespace std;
 void Elevator::initial()
 {
-	Ctime=0;Cflr=0;DES=0;target=0;
+	C_time=0;C_flr=0;DES=0;target=0;
 }
 
-int Elevator::C_time(){	return Ctime;}
+int Elevator::Ctime(){	return C_time;}
 
-int Elevator::C_flr(){	return Cflr;}
+int Elevator::Cflr(){	return C_flr;}
 
-int Elevator::N_DES(){	return DES;}
+int Elevator::NDES(){	return DES;}
 
 void Elevator::run_up()
 {
-	Ctime++;Cflr++;
+	C_time++;C_flr++;
 }
 
 void Elevator::run_down()
 {
-	Ctime++;Cflr--;
+	C_time++;C_flr--;
 }
 
 void Elevator::wait()
 {
-	Ctime++;
+	C_time++;
 }
 

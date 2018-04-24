@@ -1,6 +1,4 @@
 
-#include<iostream>
-#include<fstream>
 #include"visitor.h"
 using namespace std;
 void visitor::input(int w,int nf,int tf)

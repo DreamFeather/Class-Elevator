@@ -1,7 +1,6 @@
 #include<iostream>
 #include<fstream>
 #include"elevator.cpp"
-
 #include"visitor.cpp"
 
 using namespace std;
@@ -12,62 +11,66 @@ int n,i;
 Elevator H;
 visitor v[500];
 
-
-void run();//调度算法(暂无)
-
-/*void run_down()
+void run()
 {
-	H.run_down();
-	if(v[i+1].time()==H.C_time())
+	i=0;
+	ofstream print;
+	print.open(pathot.c_str(),ios::app);
+	int num=0;
+	for(;num<n;num++)
 	{
-		
-	}
-}
-
-void run_up()
-{
-	H.run_up();
-	if(v[i+1].time()==H.C_time())
-	{
-		
-	}
-}
-
-void start()
-{
-	for(i=0;i<n;i++)
-	{
-		while(H.C_time()>v[i].time())
-		H.wait();
-		if(H.C_time()==v[i].time())
+		while(v[num].time()>H.Ctime())H.wait();
+		if(v[num].Nflr()==H.Cflr())
 		{
-			while(H.C_flr()<v[i].Nflr())run_up();
-			while(H.C_flr()>v[i].Nflr())run_down();
-			if(H.C_flr()==v[i].Nflr())
+			if(H.Ctime()!=0&&i==0) print<<H.Ctime()<<" "<<H.Cflr()<<endl;
+		}
+			while(v[num].Nflr()>H.Cflr())H.run_up();
+			while(v[num].Nflr()<H.Cflr())H.run_down();
+			if(v[num].Nflr()==H.Cflr())
 			{
-				H.wait();v[i].in();
+				if(H.Ctime()!=0&&i==0) print<<H.Ctime()<<" "<<H.Cflr()<<endl;
+				H.wait();
+			}
+		if(v[num].Tflr()==H.Cflr())
+		{
+			if(H.Ctime()!=0) print<<H.Ctime()<<" "<<H.Cflr()<<endl;
+			if(num<n-1&&v[num+1].time()<=H.Ctime()&&v[num+1].Nflr()==H.Cflr())
+			{
+				i=1;continue;
+			}
+			else i=0;
+		}
+		else 
+		{
+			while(v[num].Tflr()<H.Cflr())H.run_down();
+			while(v[num].Tflr()>H.Cflr())H.run_up();
+			if(v[num].Tflr()==H.Cflr())
+			{
+				if(H.Ctime()!=0) print<<H.Ctime()<<" "<<H.Cflr()<<endl;
+				if(num<n-1&&v[num+1].time()<=H.Ctime()&&v[num+1].Nflr()==H.Cflr())
+				{
+					i=1;continue;
+				}
+				else i=0;	
+				H.wait();
 			}
 		}
 	}
-}*/
+}
 
 int main()
 {
 	int x,y,z;
 	H.initial();
 	ifstream scan;
-	ofstream print;
 	scan.open(pathin.c_str(),ios::in);
-	print.open(pathot.c_str(),ios::app);
 	scan>>n;
 	for(i=0;i<n;i++)
 	{
 		scan>>x>>y>>z;
 		v[i].input(x,y,z);
-		print<<v[i].time()<<" "<<v[i].Nflr()<<" "<<v[i].Tflr()<<endl;
 	}
 	scan.close();
-	print.close();
-	//start();
+	run();
 	return 0;
 }
